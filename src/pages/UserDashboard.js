@@ -46,19 +46,7 @@ const [anchorEl, setAnchorEl] = useState(null);  const [form, setForm] = useStat
     status: "PENDING"
   });
   const [editingId, setEditingId] = useState(null);
-
-  useEffect(() => {
-  loadTasks();
-
-  const interval = setInterval(() => {
-    loadTasks();
-  }, 5000);
-
-  return () => clearInterval(interval);
-}, [loadTasks]);
-
-  // LOAD TASKS
- const loadTasks = useCallback(async () => {
+  const loadTasks = useCallback(async () => {
   setLoading(true);
   if (!user?.id) return;   
   const res = await api.get(`/tasks/user/${user.id}`);
@@ -70,6 +58,17 @@ const [anchorEl, setAnchorEl] = useState(null);  const [form, setForm] = useStat
   setNotifications(newTasks);
 
 },[user]);
+  useEffect(() => {
+  loadTasks();
+
+  const interval = setInterval(() => {
+    loadTasks();
+  }, 5000);
+
+  return () => clearInterval(interval);
+}, [loadTasks]);
+
+  
 
   // UPDATE STATUS
   const updateStatus = async (id, status) => {
@@ -77,7 +76,7 @@ const [anchorEl, setAnchorEl] = useState(null);  const [form, setForm] = useStat
     loadTasks();
   };
 
-  const [loading, setLoading] = useState(false);
+  const [setLoading] = useState(false);
 
   const submit = async () => {
 
