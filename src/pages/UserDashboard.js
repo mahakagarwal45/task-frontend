@@ -58,7 +58,7 @@ const [anchorEl, setAnchorEl] = useState(null);  const [form, setForm] = useStat
 }, [loadTasks]);
 
   // LOAD TASKS
- const loadTasks = async () => {
+ const loadTasks = useCallback(async () => {
   setLoading(true);
   if (!user?.id) return;   
   const res = await api.get(`/tasks/user/${user.id}`);
@@ -69,7 +69,7 @@ const [anchorEl, setAnchorEl] = useState(null);  const [form, setForm] = useStat
 
   setNotifications(newTasks);
 
-};
+},[user]);
 
   // UPDATE STATUS
   const updateStatus = async (id, status) => {
