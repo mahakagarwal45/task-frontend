@@ -51,6 +51,13 @@ Running Locally
 
 1. Install dependencies
 2. Run the app using npm
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2da7df6e-80c1-4eef-bc47-5316964b3132" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3be3122f-c447-4974-8222-3024af73b2d7" />
+To login for admin panel, 
+Use:
+Email: admin@gmail.com
+password: admin123
 
 Limitations
 
