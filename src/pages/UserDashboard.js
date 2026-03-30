@@ -48,14 +48,16 @@ const [anchorEl, setAnchorEl] = useState(null);  const [form, setForm] = useStat
   const [editingId, setEditingId] = useState(null);
 
   useEffect(() => {
-  loadTasks();
-
-  const interval = setInterval(() => {
+  const fetchTasks = () => {
     loadTasks();
-  }, 5000); // every 5 sec
+  };
+
+  fetchTasks();
+
+  const interval = setInterval(fetchTasks, 5000);
 
   return () => clearInterval(interval);
-}, [user]);
+}, [user, loadTasks]);
 
   // LOAD TASKS
  const loadTasks = async () => {
