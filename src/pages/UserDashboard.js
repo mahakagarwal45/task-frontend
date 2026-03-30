@@ -56,8 +56,8 @@ const [anchorEl, setAnchorEl] = useState(null);  const [form, setForm] = useStat
     (t) => t.status === "PENDING" );
 
   setNotifications(newTasks);
-
-},[user]);
+  setLoading(false);
+},[user, setLoading]);
   useEffect(() => {
   loadTasks();
 
