@@ -5,8 +5,6 @@ import { Card, CardContent, TextField, Button } from "@mui/material";
 export default function Login({ setUser, goToRegister }) {
 
   const [data, setData] = useState({ email:"", password:"" });
-  const [email, setEmail] = useState("");
-const [password, setPassword] = useState("");
   
 const submit = async (e) => {
   e.preventDefault();
