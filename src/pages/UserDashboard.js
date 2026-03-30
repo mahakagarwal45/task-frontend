@@ -46,7 +46,18 @@ const [anchorEl, setAnchorEl] = useState(null);  const [form, setForm] = useStat
     status: "PENDING"
   });
   const [editingId, setEditingId] = useState(null);
-    // LOAD TASKS
+
+  useEffect(() => {
+  loadTasks();
+
+  const interval = setInterval(() => {
+    loadTasks();
+  }, 5000);
+
+  return () => clearInterval(interval);
+}, [loadTasks]);
+
+  // LOAD TASKS
  const loadTasks = async () => {
   setLoading(true);
   if (!user?.id) return;   
@@ -60,28 +71,13 @@ const [anchorEl, setAnchorEl] = useState(null);  const [form, setForm] = useStat
 
 };
 
-
-  useEffect(() => {
-  const fetchTasks = () => {
-    loadTasks();
-  };
-
-  fetchTasks();
-
-  const interval = setInterval(fetchTasks, 5000);
-
-  return () => clearInterval(interval);
-}, [user, loadTasks]);
-
-
-
   // UPDATE STATUS
   const updateStatus = async (id, status) => {
     await api.put(`/tasks/${id}/status?status=${status}`);
     loadTasks();
   };
 
-  const [ setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const submit = async () => {
 
